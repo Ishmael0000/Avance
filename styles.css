@@ -1,0 +1,126 @@
+body,
+html {
+  min-height: 100vh; /* Mejor que height: 100% para cubrir toda la pantalla */
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  font-family: "Montserrat", sans-serif;
+  background-image: url("https://png.pngtree.com/thumb_back/fw800/back_our/20190620/ourmid/pngtree-beautiful-technology-website-business-poster-background-template-image_148436.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  color: white;
+}
+
+/* Contenedor principal */
+.pagina {
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Centra horizontalmente */
+  width: 100%;
+}
+
+/* Header */
+header {
+  padding: 20px;
+  text-align: center;
+  font-size: 36px;
+  font-weight: bold;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.6);
+}
+
+/* Barra superior */
+.top-bar {
+  background-color: #d4f4f4;
+  color: black;
+  text-align: center;
+  font-weight: bold;
+  width: 100%;
+  padding: 10px 0;
+}
+
+/* Navbar */
+.navbar {
+  background-color: white;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  padding: 15px 0;
+}
+
+.navitems {
+  list-style: none;
+  display: flex;
+  gap: 40px;
+}
+
+.navitems li a {
+  text-decoration: none;
+  color: black;
+  font-weight: 500;
+  transition: color 0.3s;
+}
+
+.navitems li a:hover {
+  color: #007bff;
+}
+
+/* Grilla de productos */
+.contenedor {
+  margin-bottom: 60px; /* más aire antes de la sección de contacto */
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 30px;
+  width: 90%;
+  max-width: 1200px;
+  margin: 40px auto;
+}
+
+.contenedor figure {
+  text-align: center;
+  background-color: rgba(0, 0, 0, 0.5);
+  padding: 15px;
+  border-radius: 10px;
+}
+
+.contenedor img {
+  width: 100%;
+  height: auto;
+  max-height: 200px;
+  object-fit: contain;
+  border-radius: 8px;
+}
+
+.contenedor figcaption {
+  margin-top: 10px;
+  font-weight: 500;
+  color: white;
+}
+
+/* Contacto */
+.contacto {
+  background-color: rgba(0, 0, 0, 0.6);
+  padding: 30px;
+  border-radius: 10px;
+  text-align: center; /* Centra el texto */
+  width: 90%;
+  max-width: 800px;
+  margin: 40px auto; /* Centra el bloque horizontalmente */
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Asegura que todo dentro esté centrado */
+}
+.contenedor figure,
+.contacto {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+/* Footer */
+footer {
+  text-align: center;
+  padding: 20px;
+  background-color: rgba(0, 0, 0, 0.6);
+  width: 100%;
+}
