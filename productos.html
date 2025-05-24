@@ -2,134 +2,13 @@
 <html lang="es">
   <head>
     <meta charset="UTF-8" />
-    <title>Productos - MouseBuys</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Productos - MouseBuys</title>
+    <link rel="stylesheet" href="styles.css" />
     <link
       href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap"
       rel="stylesheet"
     />
-    <style>
-      html,
-      body {
-        min-height: 100vh;
-        margin: 0;
-        padding: 0;
-        font-family: "Montserrat", sans-serif;
-        background-image: url("https://png.pngtree.com/thumb_back/fw800/back_our/20190620/ourmid/pngtree-beautiful-technology-website-business-poster-background-template-image_148436.jpg");
-        background-size: cover;
-        background-position: center;
-        background-repeat: no-repeat;
-        background-attachment: fixed;
-        color: white;
-      }
-
-      .pagina {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        width: 100%;
-      }
-
-      header {
-        padding: 20px;
-        text-align: center;
-        font-size: 36px;
-        font-weight: bold;
-        width: 100%;
-        background-color: rgba(0, 0, 0, 0.6);
-      }
-
-      .navbar {
-        background-color: white;
-        width: 100%;
-        display: flex;
-        justify-content: center;
-        padding: 15px 0;
-      }
-
-      .navitems {
-        list-style: none;
-        display: flex;
-        gap: 40px;
-        margin: 0;
-        padding: 0;
-      }
-
-      .navitems li a {
-        text-decoration: none;
-        color: black;
-        font-weight: 500;
-        transition: color 0.3s;
-      }
-
-      .navitems li a:hover {
-        color: #007bff;
-      }
-
-      .filtros {
-        background-color: rgba(0, 0, 0, 0.6);
-        padding: 20px;
-        margin-top: 20px;
-        border-radius: 10px;
-        display: flex;
-        gap: 20px;
-        flex-wrap: wrap;
-        justify-content: center;
-        width: 90%;
-        max-width: 1200px;
-      }
-
-      .filtros select {
-        padding: 10px;
-        font-size: 16px;
-        border-radius: 8px;
-      }
-
-      .contenedor {
-        margin-bottom: 60px;
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-        gap: 30px;
-        width: 90%;
-        max-width: 1200px;
-        margin: 40px auto;
-      }
-
-      .contenedor figure {
-        text-align: center;
-        background-color: rgba(0, 0, 0, 0.5);
-        padding: 15px;
-        border-radius: 10px;
-        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
-      }
-
-      .contenedor img {
-        width: 100%;
-        height: auto;
-        max-height: 200px;
-        object-fit: contain;
-        border-radius: 8px;
-      }
-
-      .contenedor figcaption {
-        margin-top: 10px;
-        font-weight: 500;
-        color: white;
-      }
-
-      .precio {
-        margin-top: 5px;
-        font-weight: 600;
-      }
-
-      footer {
-        text-align: center;
-        padding: 20px;
-        background-color: rgba(0, 0, 0, 0.6);
-        width: 100%;
-        margin-top: 30px;
-      }
-    </style>
     <!-- React + Babel -->
     <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
     <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
@@ -137,7 +16,6 @@
   </head>
   <body>
     <div id="root"></div>
-
     <script type="text/babel">
       const productos = [
         {
@@ -166,7 +44,7 @@
           precio: "S/. 219",
         },
         {
-          nombre: "Razer Mouse Basilisk X Hyperspeed",
+          nombre: "Razer Basilisk X Hyperspeed",
           url: "https://www.reuse.pe/cdn/shop/files/Razer_1080x1080.jpg?v=1732026603",
           precio: "S/. 189",
         },
@@ -188,14 +66,17 @@
 
         const productosFiltrados = productos
           .filter((p) => (marca ? p.nombre.includes(marca) : true))
-          .filter((p) => {
-            const precioNumerico = Number(p.precio.replace("S/. ", ""));
-            return precioNumerico <= precioMax;
-          });
+          .filter((p) => Number(p.precio.replace("S/. ", "")) <= precioMax);
 
         return (
           <div className="pagina">
-            <header>MouseBuys</header>
+            <header>
+              <p className="logo">MouseBuys</p>
+            </header>
+
+            <div className="top-bar">
+              ¡Hazte con el mejor Mouse, al mejor precio!
+            </div>
 
             <nav className="navbar">
               <ul className="navitems">
@@ -219,7 +100,6 @@
                 <option value="Pulsar">Pulsar</option>
                 <option value="Lamzu">Lamzu</option>
               </select>
-
               <select onChange={(e) => setPrecioMax(Number(e.target.value))}>
                 <option value="9999">Cualquier precio</option>
                 <option value="200">Hasta S/. 200</option>
@@ -239,13 +119,16 @@
               ))}
             </div>
 
-            <footer>© 2025 MouseBuys. Todos los derechos reservados.</footer>
+            <footer>
+              <p>La Molina, Av. la Fontana 1250, Lima 15024</p>
+              <p>mousebuys@gmail.com</p>
+              <p>&copy; 2025 MouseBuys. Todos los derechos reservados.</p>
+            </footer>
           </div>
         );
       };
 
-      const root = ReactDOM.createRoot(document.getElementById("root"));
-      root.render(<App />);
+      ReactDOM.createRoot(document.getElementById("root")).render(<App />);
     </script>
   </body>
 </html>
