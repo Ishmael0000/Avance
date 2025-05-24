@@ -1,139 +1,251 @@
 <!DOCTYPE html>
 <html lang="es">
-<head>
-  <meta charset="UTF-8" />
-  <title>Productos - MouseBuys</title>
-  <link
-    href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap"
-    rel="stylesheet"
-  />
-  <link rel="stylesheet" href="styles.css" />
-  <!-- React + Babel -->
-  <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
-  <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
-  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
-  <style>
-    /* Contenedor con 4 columnas fijas */
-    .contenedor {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 1.5rem;
-      padding: 1.5rem;
-      max-width: 1200px;
-      margin: 0 auto;
-    }
-    figure {
-      background: rgba(0, 0, 0, 0.5);
-      border-radius: 8px;
-      padding: 1rem;
-      color: white;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      /* Sombra más sutil y menos alargada */
-      box-shadow: 0 4px 6px rgba(0,0,0,0.3);
-      height: 100%;
-      position: relative;
-    }
-    figure img {
-      max-height: 150px;
-      object-fit: contain;
-      margin-bottom: 0.8rem;
-      width: 100%;
-    }
-    figcaption {
-      font-weight: 600;
-      font-family: 'Montserrat', sans-serif;
-      width: 100%;
-      text-align: center;
-      color: white;
-      margin-bottom: 0.4rem;
-    }
-    .precio {
-      color: white;
-      font-weight: 600;
-      font-size: 0.95rem;
-      text-align: left;
-      width: 100%;
-      padding-left: 0.2rem;
-    }
-  </style>
-</head>
-<body>
-  <div id="root"></div>
-
-  <script type="text/babel">
-    const productos = [
-      {
-        nombre: "Logitech G PRO X Superlight",
-        url: "https://thumbor.arvutitark.ee/jYeOVmnXDsjOW3g0IsXHfvs2ndc=/trim/fit-in/800x800/filters:format(webp)/https%3A%2F%2Fstatic.arvutitark.ee%2Fpublic%2Fmedia-hub-olev%2F2023%2F08%2F445214%2F230712100011753835.png",
-        precio: "S/. 549"
-      },
-      {
-        nombre: "Razer Viper V3 PRO",
-        url: "https://m.media-amazon.com/images/I/619xpFKAXPL._AC_SL1500_.jpg",
-        precio: "S/. 519"
-      },
-      {
-        nombre: "Pulsar X2",
-        url: "https://m.media-amazon.com/images/I/51JUvVolukL._AC_UF894,1000_QL80_.jpg",
-        precio: "S/. 259"
-      },
-      {
-        nombre: "Lamzu Atlantis OG",
-        url: "https://images.versus.io/objects/lamzu-atlantis-mini-4k.front.medium.1702255850677.jpg",
-        precio: "S/. 299"
-      },
-      {
-        nombre: "Logitech G502 Hero",
-        url: "https://static-catalog.tiendamia.com/marketplace_manager_service/production/product_575a9d38_mirakl_image_1_medium.jpg",
-        precio: "S/. 219"
-      },
-      {
-        nombre: "Razer Mouse Basilisk X Hyperspeed",
-        url: "https://www.reuse.pe/cdn/shop/files/Razer_1080x1080.jpg?v=1732026603",
-        precio: "S/. 189"
-      },
-      {
-        nombre: "Pulsar Xlite V2 Wireless",
-        url: "https://m.media-amazon.com/images/I/61DWA+2vc0L._AC_SX679_.jpg",
-        precio: "S/. 329"
-      },
-      {
-        nombre: "Lamzu Atlantis Mini Pro",
-        url: "https://m.media-amazon.com/images/I/51CzatWfBRL.__AC_SX300_SY300_QL70_FMwebp_.jpg",
-        precio: "S/. 349"
+  <head>
+    <meta charset="UTF-8" />
+    <title>Productos - MouseBuys</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      html,
+      body {
+        min-height: 100vh;
+        margin: 0;
+        padding: 0;
+        font-family: "Montserrat", sans-serif;
+        background-image: url("https://png.pngtree.com/thumb_back/fw800/back_our/20190620/ourmid/pngtree-beautiful-technology-website-business-poster-background-template-image_148436.jpg");
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        color: white;
       }
-    ];
 
-    const App = () => (
-      <div className="pagina">
-        <header>
-          <p className="logo">MouseBuys</p>
-        </header>
+      .pagina {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+      }
 
-        <nav className="navbar">
-          <ul className="navitems">
-            <li><a href="index.html">Inicio</a></li>
-            <li><a href="productos.html">Productos</a></li>
-            <li><a href="contacto.html">Contacto</a></li>
-          </ul>
-        </nav>
+      header {
+        padding: 20px;
+        text-align: center;
+        font-size: 36px;
+        font-weight: bold;
+        width: 100%;
+        background-color: rgba(0, 0, 0, 0.6);
+      }
 
-        <div className="contenedor">
-          {productos.map(({nombre, url, precio}, i) => (
-            <figure key={i}>
-              <img src={url} alt={nombre} />
-              <figcaption>{nombre}</figcaption>
-              <div className="precio">{precio}</div>
-            </figure>
-          ))}
-        </div>
-      </div>
-    );
+      .navbar {
+        background-color: white;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        padding: 15px 0;
+      }
 
-    const root = ReactDOM.createRoot(document.getElementById("root"));
-    root.render(<App />);
-  </script>
-</body>
+      .navitems {
+        list-style: none;
+        display: flex;
+        gap: 40px;
+        margin: 0;
+        padding: 0;
+      }
+
+      .navitems li a {
+        text-decoration: none;
+        color: black;
+        font-weight: 500;
+        transition: color 0.3s;
+      }
+
+      .navitems li a:hover {
+        color: #007bff;
+      }
+
+      .filtros {
+        background-color: rgba(0, 0, 0, 0.6);
+        padding: 20px;
+        margin-top: 20px;
+        border-radius: 10px;
+        display: flex;
+        gap: 20px;
+        flex-wrap: wrap;
+        justify-content: center;
+        width: 90%;
+        max-width: 1200px;
+      }
+
+      .filtros select {
+        padding: 10px;
+        font-size: 16px;
+        border-radius: 8px;
+      }
+
+      .contenedor {
+        margin-bottom: 60px;
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+        gap: 30px;
+        width: 90%;
+        max-width: 1200px;
+        margin: 40px auto;
+      }
+
+      .contenedor figure {
+        text-align: center;
+        background-color: rgba(0, 0, 0, 0.5);
+        padding: 15px;
+        border-radius: 10px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+      }
+
+      .contenedor img {
+        width: 100%;
+        height: auto;
+        max-height: 200px;
+        object-fit: contain;
+        border-radius: 8px;
+      }
+
+      .contenedor figcaption {
+        margin-top: 10px;
+        font-weight: 500;
+        color: white;
+      }
+
+      .precio {
+        margin-top: 5px;
+        font-weight: 600;
+      }
+
+      footer {
+        text-align: center;
+        padding: 20px;
+        background-color: rgba(0, 0, 0, 0.6);
+        width: 100%;
+        margin-top: 30px;
+      }
+    </style>
+    <!-- React + Babel -->
+    <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  </head>
+  <body>
+    <div id="root"></div>
+
+    <script type="text/babel">
+      const productos = [
+        {
+          nombre: "Logitech G PRO X Superlight",
+          url: "https://thumbor.arvutitark.ee/jYeOVmnXDsjOW3g0IsXHfvs2ndc=/trim/fit-in/800x800/filters:format(webp)/https%3A%2F%2Fstatic.arvutitark.ee%2Fpublic%2Fmedia-hub-olev%2F2023%2F08%2F445214%2F230712100011753835.png",
+          precio: "S/. 549",
+        },
+        {
+          nombre: "Razer Viper V3 PRO",
+          url: "https://m.media-amazon.com/images/I/619xpFKAXPL._AC_SL1500_.jpg",
+          precio: "S/. 519",
+        },
+        {
+          nombre: "Pulsar X2",
+          url: "https://m.media-amazon.com/images/I/51JUvVolukL._AC_UF894,1000_QL80_.jpg",
+          precio: "S/. 259",
+        },
+        {
+          nombre: "Lamzu Atlantis OG",
+          url: "https://images.versus.io/objects/lamzu-atlantis-mini-4k.front.medium.1702255850677.jpg",
+          precio: "S/. 299",
+        },
+        {
+          nombre: "Logitech G502 Hero",
+          url: "https://static-catalog.tiendamia.com/marketplace_manager_service/production/product_575a9d38_mirakl_image_1_medium.jpg",
+          precio: "S/. 219",
+        },
+        {
+          nombre: "Razer Mouse Basilisk X Hyperspeed",
+          url: "https://www.reuse.pe/cdn/shop/files/Razer_1080x1080.jpg?v=1732026603",
+          precio: "S/. 189",
+        },
+        {
+          nombre: "Pulsar Xlite V2 Wireless",
+          url: "https://m.media-amazon.com/images/I/61DWA+2vc0L._AC_SX679_.jpg",
+          precio: "S/. 329",
+        },
+        {
+          nombre: "Lamzu Atlantis Mini Pro",
+          url: "https://m.media-amazon.com/images/I/51CzatWfBRL.__AC_SX300_SY300_QL70_FMwebp_.jpg",
+          precio: "S/. 349",
+        },
+      ];
+
+      const App = () => {
+        const [marca, setMarca] = React.useState("");
+        const [precioMax, setPrecioMax] = React.useState(9999);
+
+        const productosFiltrados = productos
+          .filter((p) => (marca ? p.nombre.includes(marca) : true))
+          .filter((p) => {
+            const precioNumerico = Number(p.precio.replace("S/. ", ""));
+            return precioNumerico <= precioMax;
+          });
+
+        return (
+          <div className="pagina">
+            <header>MouseBuys</header>
+
+            <nav className="navbar">
+              <ul className="navitems">
+                <li>
+                  <a href="index.html">Inicio</a>
+                </li>
+                <li>
+                  <a href="productos.html">Productos</a>
+                </li>
+                <li>
+                  <a href="contacto.html">Contacto</a>
+                </li>
+              </ul>
+            </nav>
+
+            <div className="filtros">
+              <select onChange={(e) => setMarca(e.target.value)}>
+                <option value="">Todas las marcas</option>
+                <option value="Logitech">Logitech</option>
+                <option value="Razer">Razer</option>
+                <option value="Pulsar">Pulsar</option>
+                <option value="Lamzu">Lamzu</option>
+              </select>
+
+              <select onChange={(e) => setPrecioMax(Number(e.target.value))}>
+                <option value="9999">Cualquier precio</option>
+                <option value="200">Hasta S/. 200</option>
+                <option value="300">Hasta S/. 300</option>
+                <option value="400">Hasta S/. 400</option>
+                <option value="500">Hasta S/. 500</option>
+              </select>
+            </div>
+
+            <div className="contenedor">
+              {productosFiltrados.map(({ nombre, url, precio }, i) => (
+                <figure key={i}>
+                  <img src={url} alt={nombre} />
+                  <figcaption>{nombre}</figcaption>
+                  <div className="precio">{precio}</div>
+                </figure>
+              ))}
+            </div>
+
+            <footer>© 2025 MouseBuys. Todos los derechos reservados.</footer>
+          </div>
+        );
+      };
+
+      const root = ReactDOM.createRoot(document.getElementById("root"));
+      root.render(<App />);
+    </script>
+  </body>
 </html>
