@@ -13,6 +13,9 @@ const Navbar = () => (
       <li>
         <a href="game.html">Juego</a>
       </li>
+      <li>
+        <a href="torneo.html">Torneo</a>
+      </li>
     </ul>
   </nav>
 );
