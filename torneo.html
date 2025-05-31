@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Inscripción Torneo</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      /* Todo el CSS que mostraste, sin cambios */
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+
+      html,
+      body {
+        min-height: 100vh;
+        font-family: "Montserrat", sans-serif;
+        background-color: white;
+        color: black;
+        overflow-x: hidden;
+      }
+
+      .pagina {
+        display: flex;
+        flex-direction: column;
+        min-height: 100vh;
+      }
+
+      header {
+        width: 100%;
+        padding: 20px;
+        text-align: center;
+        font-size: 36px;
+        font-weight: bold;
+        background-color: transparent;
+        color: black;
+      }
+
+      .logo {
+        margin: 0;
+      }
+
+      .top-bar {
+        background-color: #d4f4f4;
+        color: black;
+        text-align: center;
+        font-weight: bold;
+        padding: 10px 0;
+        width: 100%;
+      }
+
+      .navbar {
+        background-color: white;
+        display: flex;
+        justify-content: center;
+        padding: 15px 0;
+        width: 100%;
+      }
+
+      .navitems {
+        list-style: none;
+        display: flex;
+        gap: 40px;
+      }
+
+      .navitems li a {
+        text-decoration: none;
+        color: black;
+        font-weight: 500;
+        transition: color 0.3s;
+      }
+
+      .navitems li a:hover {
+        color: #007bff;
+      }
+
+      footer {
+        text-align: center;
+        padding: 20px;
+        background-color: #f2f2f2;
+        color: black;
+        width: 100%;
+        margin-top: auto;
+      }
+
+      form {
+        background-color: #ffffff;
+        padding: 30px;
+        border-radius: 12px;
+        box-shadow: 0 0 20px rgba(0, 123, 255, 0.3);
+        max-width: 450px;
+        margin: 40px auto;
+        display: flex;
+        flex-direction: column;
+      }
+
+      label {
+        margin-top: 15px;
+        font-weight: 600;
+        color: black;
+      }
+
+      input,
+      select {
+        margin-top: 5px;
+        padding: 10px;
+        border-radius: 6px;
+        border: 1.5px solid #007bff;
+        background-color: #f0f8ff;
+        color: #000;
+        font-weight: 500;
+      }
+
+      input:focus,
+      select:focus {
+        outline: none;
+        border-color: #0056b3;
+        box-shadow: 0 0 5px #0056b3;
+      }
+
+      button {
+        margin-top: 25px;
+        padding: 12px;
+        background-color: #007bff;
+        color: #fff;
+        font-weight: bold;
+        border: none;
+        border-radius: 10px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+      }
+
+      button:hover {
+        background-color: #0056b3;
+      }
+
+      h2 {
+        text-align: center;
+        color: black;
+        margin: 40px 0 20px;
+      }
+    </style>
+
+    <!-- React + Babel -->
+    <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  </head>
+
+  <body>
+    <div id="root"></div>
+
+    <script type="text/babel">
+      const Torneo = () => {
+        const [correo, setCorreo] = React.useState("");
+        const [nombre, setNombre] = React.useState("");
+        const [fechaNacimiento, setFechaNacimiento] = React.useState("");
+        const [torneo, setTorneo] = React.useState("");
+        const [pago, setPago] = React.useState("");
+
+        const calcularEdad = (fechaNac) => {
+          const hoy = new Date();
+          const nacimiento = new Date(fechaNac);
+          let edad = hoy.getFullYear() - nacimiento.getFullYear();
+          const mes = hoy.getMonth() - nacimiento.getMonth();
+          if (mes < 0 || (mes === 0 && hoy.getDate() < nacimiento.getDate())) {
+            edad--;
+          }
+          return edad;
+        };
+
+        const handleSubmit = (e) => {
+          e.preventDefault();
+
+          if (!correo || !nombre || !fechaNacimiento || !torneo || !pago) {
+            alert("Por favor, completa todos los campos.");
+            return;
+          }
+
+          const edad = calcularEdad(fechaNacimiento);
+          if (edad < 14) {
+            alert("Debes tener al menos 14 años para inscribirte.");
+            return;
+          }
+
+          const costo = 100;
+          const pagoNum = parseFloat(pago);
+          const vuelto = pagoNum - costo;
+
+          if (isNaN(pagoNum)) {
+            alert("El monto entregado no es válido.");
+            return;
+          }
+
+          if (vuelto < 0) {
+            alert(
+              `Pago insuficiente. Faltan S/.${Math.abs(vuelto).toFixed(2)}.`
+            );
+          } else {
+            alert(`Inscripción exitosa. Vuelto: S/.${vuelto.toFixed(2)}.`);
+          }
+        };
+
+        return (
+          <div className="pagina">
+            <nav className="navbar">
+              <ul className="navitems">
+                <li>
+                  <a href="index.html">Inicio</a>
+                </li>
+                <li>
+                  <a href="productos.html">Productos</a>
+                </li>
+                <li>
+                  <a href="contacto.html">Contacto</a>
+                </li>
+                <li>
+                  <a href="game.html">Juego</a>
+                </li>
+                <li>
+                  <a href="torneo.html">Torneo</a>
+                </li>
+              </ul>
+            </nav>
+
+            <h2>Inscripción Torneo</h2>
+
+            <form onSubmit={handleSubmit}>
+              <label>
+                Correo:
+                <input
+                  type="email"
+                  value={correo}
+                  onChange={(e) => setCorreo(e.target.value)}
+                  required
+                />
+              </label>
+
+              <label>
+                Nombre:
+                <input
+                  type="text"
+                  value={nombre}
+                  onChange={(e) => setNombre(e.target.value)}
+                  required
+                />
+              </label>
+
+              <label>
+                Fecha de Nacimiento:
+                <input
+                  type="date"
+                  value={fechaNacimiento}
+                  onChange={(e) => setFechaNacimiento(e.target.value)}
+                  required
+                />
+              </label>
+
+              <label>
+                Torneo:
+                <select
+                  value={torneo}
+                  onChange={(e) => setTorneo(e.target.value)}
+                  required
+                >
+                  <option value="">Selecciona</option>
+                  <option value="LOL">LOL</option>
+                  <option value="Fornite">Fornite</option>
+                  <option value="X">X</option>
+                </select>
+              </label>
+
+              <label>
+                Monto entregado (S/):
+                <input
+                  type="number"
+                  value={pago}
+                  onChange={(e) => setPago(e.target.value)}
+                  required
+                />
+              </label>
+
+              <button type="submit">Inscribirse</button>
+            </form>
+
+            <footer>
+              <p>MouseBuys © 2025 - Todos los derechos reservados.</p>
+            </footer>
+          </div>
+        );
+      };
+
+      const root = ReactDOM.createRoot(document.getElementById("root"));
+      root.render(<Torneo />);
+    </script>
+  </body>
+</html>
