@@ -2,133 +2,39 @@
 <html lang="es">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Productos - MouseBuys</title>
-    <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="css/styles.css" />
     <link
       href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap"
       rel="stylesheet"
     />
-    <!-- React + Babel -->
     <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
     <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
     <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
   </head>
   <body>
+    <header>
+      <p class="logo">MouseBuys</p>
+    </header>
+
+    <div class="top-bar">¡Hazte con el mejor Mouse, al mejor precio!</div>
+    <nav class="navbar">
+      <ul class="navitems">
+        <li><a href="index.html">Inicio</a></li>
+        <li><a href="productos.html">Productos</a></li>
+        <li><a href="contacto.html">Contacto</a></li>
+        <li><a href="game.html">Juego</a></li>
+      </ul>
+    </nav>
     <div id="root"></div>
+
+    <script type="text/babel" src="js/cardfilter.js"></script>
+
     <script type="text/babel">
-      const productos = [
-        {
-          nombre: "Logitech G PRO X Superlight",
-          url: "https://thumbor.arvutitark.ee/jYeOVmnXDsjOW3g0IsXHfvs2ndc=/trim/fit-in/800x800/filters:format(webp)/https%3A%2F%2Fstatic.arvutitark.ee%2Fpublic%2Fmedia-hub-olev%2F2023%2F08%2F445214%2F230712100011753835.png",
-          precio: "S/. 549",
-        },
-        {
-          nombre: "Razer Viper V3 PRO",
-          url: "https://m.media-amazon.com/images/I/619xpFKAXPL._AC_SL1500_.jpg",
-          precio: "S/. 519",
-        },
-        {
-          nombre: "Pulsar X2",
-          url: "https://m.media-amazon.com/images/I/51JUvVolukL._AC_UF894,1000_QL80_.jpg",
-          precio: "S/. 259",
-        },
-        {
-          nombre: "Lamzu Atlantis OG",
-          url: "https://images.versus.io/objects/lamzu-atlantis-mini-4k.front.medium.1702255850677.jpg",
-          precio: "S/. 299",
-        },
-        {
-          nombre: "Logitech G502 Hero",
-          url: "https://static-catalog.tiendamia.com/marketplace_manager_service/production/product_575a9d38_mirakl_image_1_medium.jpg",
-          precio: "S/. 219",
-        },
-        {
-          nombre: "Razer Basilisk X Hyperspeed",
-          url: "https://www.reuse.pe/cdn/shop/files/Razer_1080x1080.jpg?v=1732026603",
-          precio: "S/. 189",
-        },
-        {
-          nombre: "Pulsar Xlite V2 Wireless",
-          url: "https://m.media-amazon.com/images/I/61DWA+2vc0L._AC_SX679_.jpg",
-          precio: "S/. 329",
-        },
-        {
-          nombre: "Lamzu Atlantis Mini Pro",
-          url: "https://m.media-amazon.com/images/I/51CzatWfBRL.__AC_SX300_SY300_QL70_FMwebp_.jpg",
-          precio: "S/. 349",
-        },
-      ];
-
-      const App = () => {
-        const [marca, setMarca] = React.useState("");
-        const [precioMax, setPrecioMax] = React.useState(9999);
-
-        const productosFiltrados = productos
-          .filter((p) => (marca ? p.nombre.includes(marca) : true))
-          .filter((p) => Number(p.precio.replace("S/. ", "")) <= precioMax);
-
-        return (
-          <div className="pagina">
-            <header>
-              <p className="logo">MouseBuys</p>
-            </header>
-
-            <div className="top-bar">
-              ¡Hazte con el mejor Mouse, al mejor precio!
-            </div>
-
-            <nav className="navbar">
-              <ul className="navitems">
-                <li>
-                  <a href="index.html">Inicio</a>
-                </li>
-                <li>
-                  <a href="productos.html">Productos</a>
-                </li>
-                <li>
-                  <a href="contacto.html">Contacto</a>
-                </li>
-              </ul>
-            </nav>
-
-            <div className="filtros">
-              <select onChange={(e) => setMarca(e.target.value)}>
-                <option value="">Todas las marcas</option>
-                <option value="Logitech">Logitech</option>
-                <option value="Razer">Razer</option>
-                <option value="Pulsar">Pulsar</option>
-                <option value="Lamzu">Lamzu</option>
-              </select>
-              <select onChange={(e) => setPrecioMax(Number(e.target.value))}>
-                <option value="9999">Cualquier precio</option>
-                <option value="200">Hasta S/. 200</option>
-                <option value="300">Hasta S/. 300</option>
-                <option value="400">Hasta S/. 400</option>
-                <option value="500">Hasta S/. 500</option>
-              </select>
-            </div>
-
-            <div className="contenedor">
-              {productosFiltrados.map(({ nombre, url, precio }, i) => (
-                <figure key={i}>
-                  <img src={url} alt={nombre} />
-                  <figcaption>{nombre}</figcaption>
-                  <div className="precio">{precio}</div>
-                </figure>
-              ))}
-            </div>
-
-            <footer>
-              <p>La Molina, Av. la Fontana 1250, Lima 15024</p>
-              <p>mousebuys@gmail.com</p>
-              <p>&copy; 2025 MouseBuys. Todos los derechos reservados.</p>
-            </footer>
-          </div>
-        );
-      };
-
-      ReactDOM.createRoot(document.getElementById("root")).render(<App />);
+      ReactDOM.createRoot(document.getElementById("root")).render(
+        <CardFilter />
+      );
     </script>
   </body>
 </html>
