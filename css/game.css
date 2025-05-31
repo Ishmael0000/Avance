@@ -1,0 +1,167 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html,
+body {
+  min-height: 100vh;
+  font-family: "Montserrat", sans-serif;
+  background-color: white;
+  color: black;
+  overflow-x: hidden;
+}
+
+.pagina {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+header {
+  width: 100%;
+  padding: 20px;
+  text-align: center;
+  font-size: 36px;
+  font-weight: bold;
+  background-color: transparent;
+  color: black;
+}
+
+.logo {
+  margin: 0;
+}
+
+.top-bar {
+  background-color: #d4f4f4;
+  color: black;
+  text-align: center;
+  font-weight: bold;
+  padding: 10px 0;
+  width: 100%;
+}
+
+.navbar {
+  background-color: white;
+  display: flex;
+  justify-content: center;
+  padding: 15px 0;
+  width: 100%;
+}
+
+.navitems {
+  list-style: none;
+  display: flex;
+  gap: 40px;
+  flex-wrap: wrap;
+  justify-content: center;
+  padding: 0;
+  margin: 0;
+}
+
+.navitems li a {
+  text-decoration: none;
+  color: black;
+  font-weight: 500;
+  transition: color 0.3s;
+}
+
+.navitems li a:hover {
+  color: #007bff;
+}
+
+.contenedor {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 30px;
+  width: 90%;
+  max-width: 900px;
+  margin: 40px auto 60px;
+}
+
+/* Estilos específicos del juego */
+#gameArea {
+  width: 100%;
+  max-width: 800px;
+  height: 500px;
+  margin: 20px auto;
+  background-color: #fff;
+  border: 2px solid #000;
+  position: relative;
+  overflow: hidden;
+  border-radius: 10px;
+}
+
+.trash {
+  width: 40px;
+  height: 40px;
+  background-color: brown;
+  border-radius: 50%;
+  position: absolute;
+  cursor: pointer;
+}
+
+#info {
+  font-size: 20px;
+  margin: 20px 0;
+  text-align: center;
+}
+
+#startBtn {
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+  background-color: #fca311;
+  border: none;
+  border-radius: 5px;
+  color: white;
+  margin: 0 auto 10px;
+  display: block;
+  max-width: 200px;
+  transition: background-color 0.3s;
+}
+
+#startBtn:hover {
+  background-color: #d99107;
+}
+
+footer {
+  text-align: center;
+  padding: 20px;
+  background-color: #f2f2f2;
+  color: black;
+  width: 100%;
+  margin-top: auto;
+}
+/* RESPONSIVO */
+@media (max-width: 850px) {
+  #gameArea {
+    height: 400px;
+  }
+
+  #info {
+    font-size: 18px;
+  }
+
+  #startBtn {
+    width: 90%;
+    font-size: 18px;
+  }
+}
+
+@media (max-width: 500px) {
+  #gameArea {
+    height: 300px;
+  }
+
+  .navitems {
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    justify-content: center;
+  }
+
+  .navitems li {
+    margin: 0 10px;
+  }
+}

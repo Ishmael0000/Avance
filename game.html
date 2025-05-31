@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Garbage Collector Game - MouseBuys</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="css/game.css" />
+  </head>
+
+  <body>
+    <div class="pagina">
+      <!-- Header -->
+      <header>
+        <p class="logo">MouseBuys</p>
+      </header>
+
+      <!-- Barra superior -->
+      <div class="top-bar">¡Hazte con el mejor Mouse, al mejor precio!</div>
+
+      <!-- Navbar -->
+      <nav class="navbar">
+        <ul class="navitems">
+          <li><a href="index.html">Inicio</a></li>
+          <li><a href="productos.html">Productos</a></li>
+          <li><a href="contacto.html">Contacto</a></li>
+          <li><a href="game.html">Juego</a></li>
+        </ul>
+      </nav>
+
+      <!-- Contenido del juego -->
+      <main class="contenedor">
+        <div>
+          <h2 style="text-align: center">Garbage Collector</h2>
+          <div id="info">
+            <span id="timer">Tiempo: 60</span> |
+            <span id="score">Basura recogida: 0</span>
+          </div>
+          <button id="startBtn">Iniciar juego</button>
+          <div id="gameArea"></div>
+        </div>
+      </main>
+
+      <!-- Footer -->
+      <footer>
+        <p>La Molina, Av. la Fontana 1250, Lima 15024</p>
+        <p>mousebuys@gmail.com</p>
+        <p>&copy; 2025 MouseBuys. Todos los derechos reservados.</p>
+      </footer>
+    </div>
+
+    <!-- Script del juego -->
+    <script>
+      const gameArea = document.getElementById("gameArea");
+      const scoreEl = document.getElementById("score");
+      const timerEl = document.getElementById("timer");
+      const startBtn = document.getElementById("startBtn");
+
+      let score = 0;
+      let timeLeft = 60;
+      let interval;
+
+      function getRandomPosition() {
+        const x = Math.random() * (gameArea.clientWidth - 40);
+        const y = Math.random() * (gameArea.clientHeight - 40);
+        return { x, y };
+      }
+
+      function createTrash() {
+        const trash = document.createElement("div");
+        trash.classList.add("trash");
+
+        const { x, y } = getRandomPosition();
+        trash.style.left = `${x}px`;
+        trash.style.top = `${y}px`;
+
+        trash.addEventListener("click", () => {
+          trash.remove();
+          score++;
+          scoreEl.textContent = `Basura recogida: ${score}`;
+        });
+
+        gameArea.appendChild(trash);
+      }
+
+      function startGame() {
+        gameArea.innerHTML = "";
+        score = 0;
+        timeLeft = 60;
+        scoreEl.textContent = `Basura recogida: ${score}`;
+        timerEl.textContent = `Tiempo: ${timeLeft}`;
+        clearInterval(interval);
+
+        for (let i = 0; i < 10; i++) {
+          createTrash();
+        }
+
+        interval = setInterval(() => {
+          timeLeft--;
+          timerEl.textContent = `Tiempo: ${timeLeft}`;
+          if (Math.random() < 0.3) {
+            createTrash();
+          }
+          if (timeLeft <= 0) {
+            clearInterval(interval);
+            endGame();
+          }
+        }, 1000);
+      }
+
+      function endGame() {
+        if (score >= 10) {
+          alert("¡Felicidades! ¡Nivel superado!");
+        } else {
+          alert("¡Tiempo agotado! No alcanzaste el mínimo de basuritas.");
+        }
+      }
+
+      startBtn.addEventListener("click", startGame);
+    </script>
+  </body>
+</html>
