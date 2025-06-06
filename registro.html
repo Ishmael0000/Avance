@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Registro - MouseBuys</title>
+    <link rel="stylesheet" href="css/registro.css" />
+    <link rel="stylesheet" href="css/styles.css" />
+    <link rel="stylesheet" href="css/app.css" />
+    <link rel="stylesheet" href="css/componentes.css" />
+  </head>
+  <body>
+
+    <div class="pagina">
+      <section class="contacto">
+        <h1>MouseBuys</h1>
+        <h2>CREAR UNA CUENTA</h2>
+        <p class="slogan">Completa todos los campos para crear tu cuenta.</p>
+
+        <form action="index.html" method="GET">
+  <input
+    type="text"
+    id="nombre"
+    name="nombre"
+    placeholder="Nombres"
+    required
+  />
+  <input
+    type="text"
+    id="apellido"
+    name="apellido"
+    placeholder="Apellidos"
+    required
+  />
+  <input
+    type="date"
+    id="fecha-nacimiento"
+    name="fecha-nacimiento"
+    placeholder="Fecha de Nacimiento"
+    required
+    max="2025-06-06"
+    min="1900-01-01"
+  />
+  <input
+    type="email"
+    id="correo"
+    name="correo"
+    placeholder="Correo electrónico"
+    required
+  />
+  <input
+    type="password"
+    id="contrasena"
+    name="contrasena"
+    placeholder="Contraseña"
+    required
+  />
+  <div class="privacidad">
+    <label>
+      <p>
+        Al crear una cuenta, aceptas nuestros
+        <a href="https://www.hcaptcha.com/terms" target="_blank" rel="noopener noreferrer">términos de servicio</a>
+        y has revisado nuestra
+        <a href="https://www.hcaptcha.com/privacy" target="_blank" rel="noopener noreferrer">política de privacidad</a>.
+        Aceptas recibir mensajes de texto y/o comunicaciones por correo electrónico. Este sitio está protegido por hCaptcha y sus
+        <a href="https://www.hcaptcha.com/privacy" target="_blank" rel="noopener noreferrer">políticas de privacidad</a>
+        y sus
+        <a href="https://www.hcaptcha.com/terms" target="_blank" rel="noopener noreferrer">términos de servicio</a>
+        aplicados.
+      </p>
+    </label>
+  </div>
+
+  <button type="submit">Registrarme</button>
+</form>
+
+
+          <p class="link-ingresar">
+            ¿Ya tienes una cuenta? <a href="ingresar.html">Iniciar sesión</a>
+          </p>
+        </form>
+      </section>
+    </div>
+
+    <div id="root"></div>
+    <script type="text/babel" src="js/registro.js"></script>
+  </body>
+</html>

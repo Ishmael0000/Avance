@@ -1,0 +1,102 @@
+
+a {
+  color: #000;
+  text-decoration: underline;
+  text-decoration-color: black;
+  outline: none;
+  -webkit-tap-highlight-color: transparent;
+}
+
+a:hover {
+  text-decoration-thickness: 2px;
+}
+
+
+.contacto {
+  background-color: #ffffff;
+  color: black;
+  padding: 40px;
+  border-radius: 12px;
+  text-align: center;
+  width: 95%;
+  max-width: 600px;
+  margin: 60px auto;
+}
+
+
+.contacto h1 {
+  margin-bottom: 30px;
+  font-size: 3.5rem; 
+  font-weight: bold;
+}
+
+
+.slogan {
+  font-size: 1.2rem;
+  color: #555;
+  margin-bottom: 30px;
+}
+
+
+.contacto form {
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+}
+
+
+.contacto input {
+  padding: 18px;
+  border-radius: 10px;
+  border: 1px solid #ccc;
+  font-size: 1.1rem;
+  transition: border 0.3s;
+}
+
+.contacto input:focus {
+  border-color: #007bff;
+  outline: none;
+}
+
+
+.contacto button {
+  background-color: #000;
+  color: white;
+  padding: 18px;
+  font-weight: bold;
+  font-size: 1.1rem;
+  border-radius: 10px;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.2s;
+  width: 100%;
+}
+
+.contacto button:hover {
+  background-color: #222;
+  transform: scale(1.03);
+}
+
+
+.link-olvido {
+  text-align: right;
+  font-size: 1rem;
+}
+
+.link-crear {
+  text-align: center;
+  margin-top: 15px;
+  font-size: 1rem;
+}
+
+.privacidad {
+  margin: 15px 0;
+  font-size: 1rem;
+  text-align: center;
+}
+
+.privacidad a {
+  color: #000;
+  text-decoration: underline;
+  text-decoration-color: black;
+}

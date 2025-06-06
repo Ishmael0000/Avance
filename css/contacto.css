@@ -1,86 +1,25 @@
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-}
-
-html,
-body {
-  min-height: 100vh;
-  font-family: "Montserrat", sans-serif;
-  background-color: white;
-  color: black;
-  overflow-x: hidden;
-}
-
-.pagina {
-  display: flex;
-  flex-direction: column;
-  min-height: 100vh;
-}
-
-header {
-  width: 100%;
-  padding: 20px;
-  text-align: center;
-  font-size: 36px;
-  font-weight: bold;
-  background-color: transparent;
-  color: black;
-}
-
-.logo {
-  margin: 0;
-}
-
-.top-bar {
-  background-color: #d4f4f4;
-  color: black;
-  text-align: center;
-  font-weight: bold;
-  padding: 10px 0;
-  width: 100%;
-}
-
-.navbar {
-  background-color: white;
-  display: flex;
-  justify-content: center;
-  padding: 15px 0;
-  width: 100%;
-}
-
-.navitems {
-  list-style: none;
-  display: flex;
-  gap: 40px;
-  flex-wrap: wrap;
-  justify-content: center;
-}
-
-.navitems li a {
-  text-decoration: none;
-  color: black;
-  font-weight: 500;
-  transition: color 0.3s;
-}
-
-.navitems li a:hover {
-  color: #007bff;
-}
-
 .contacto {
   background-color: #ffffff;
   color: black;
   padding: 30px;
   border-radius: 10px;
-  text-align: center;
+  text-align: center;        
   width: 90%;
   max-width: 800px;
-  margin: 40px auto;
+  margin: 40px auto;    
 }
 
-iframe {
+.contacto h2 {
+  margin-bottom: 15px;
+  font-weight: 600;
+}
+
+.contacto p {
+  margin-bottom: 10px;
+  font-size: 16px;
+}
+
+.contacto iframe {
   margin-top: 25px;
   width: 100%;
   height: 400px;
@@ -88,36 +27,14 @@ iframe {
   border: none;
 }
 
-footer {
-  text-align: center;
-  padding: 20px;
-  background-color: #f2f2f2;
-  color: black;
-  width: 100%;
-  margin-top: auto;
-}
-
-/* Responsive */
 @media (max-width: 768px) {
-  .navitems {
-    gap: 20px;
-  }
-
-  iframe {
+  .contacto iframe {
     height: 300px;
   }
 }
 
 @media (max-width: 480px) {
-  header {
-    font-size: 28px;
-  }
-
   .contacto p {
-    font-size: 16px;
-  }
-
-  .navitems {
-    gap: 15px;
+    font-size: 14px;
   }
 }

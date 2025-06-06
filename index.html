@@ -10,7 +10,9 @@
       rel="stylesheet"
     />
     <link rel="stylesheet" href="css/styles.css" />
-
+    <link rel="stylesheet" href="css/app.css" />
+    <link rel="stylesheet" href="css/componentes.css" />
+    <link rel="stylesheet" href="css/contacto.css" />
     <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
     <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
     <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
@@ -35,14 +37,9 @@
 
         return (
           <div className="pagina">
-            <header>
-              <p className="logo">MouseBuys</p>
-            </header>
-
-            <div className="top-bar">
-              ¡Hazte con el mejor Mouse, al mejor precio!
-            </div>
-
+            {}
+            <Header />
+            <TopBar />
             <Navbar />
 
             <div className="contenedor">
@@ -59,8 +56,7 @@
             <section className="contacto">
               <h2>Contacto</h2>
               <p>
-                <strong>Dirección:</strong> La Molina, Av. la Fontana 1250, Lima
-                15024
+                <strong>Dirección:</strong> La Molina, Av. la Fontana 1250, Lima 15024
               </p>
               <p>
                 <strong>Teléfono:</strong> (01) 2086000

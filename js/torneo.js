@@ -1,5 +1,6 @@
-// torneo.js
-const Torneo = () => {
+
+
+const TorneoForm = () => {
   const [correo, setCorreo] = React.useState("");
   const [nombre, setNombre] = React.useState("");
   const [fechaNacimiento, setFechaNacimiento] = React.useState("");
@@ -48,30 +49,10 @@ const Torneo = () => {
   };
 
   return (
-    <div className="pagina">
-      <nav className="navbar">
-        <ul className="navitems">
-          <li>
-            <a href="index.html">Inicio</a>
-          </li>
-          <li>
-            <a href="productos.html">Productos</a>
-          </li>
-          <li>
-            <a href="contacto.html">Contacto</a>
-          </li>
-          <li>
-            <a href="game.html">Juego</a>
-          </li>
-          <li>
-            <a href="torneo.html">Torneo</a>
-          </li>
-        </ul>
-      </nav>
-
+    <>
       <h2>Inscripción Torneo</h2>
 
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmit} className="form-torneo">
         <label>
           Correo:
           <input
@@ -128,13 +109,6 @@ const Torneo = () => {
 
         <button type="submit">Inscribirse</button>
       </form>
-
-      <footer>
-        <p>MouseBuys © 2025 - Todos los derechos reservados.</p>
-      </footer>
-    </div>
+    </>
   );
 };
-
-const root = ReactDOM.createRoot(document.getElementById("root"));
-root.render(<Torneo />);
