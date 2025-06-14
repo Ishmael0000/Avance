@@ -9,7 +9,9 @@ const Cart = () => {
   }, []);
 
   const total = items.reduce((sum, item) => {
-    const number = parseFloat(item.precio.replace("S/.", "").replace(",", "").trim());
+    const number = parseFloat(
+      item.precio.replace("S/.", "").replace(",", "").trim()
+    );
     return sum + number;
   }, 0);
 
@@ -43,13 +45,13 @@ const Cart = () => {
           {}
           <div className="cart-summary box">
             <h3>Resumen</h3>
-            <p>Total: <strong>S/. {total.toFixed(2)}</strong></p>
+            <p>
+              Total: <strong>S/. {total.toFixed(2)}</strong>
+            </p>
             <button onClick={vaciarCarrito} className="btn-agregar">
               Vaciar carrito 🗑️
             </button>
-            <button className="btn-pagar">
-              Pagar ahora 💳
-            </button>
+            <button className="btn-pagar">Pagar ahora 💳</button>
           </div>
         </div>
       )}

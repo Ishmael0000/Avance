@@ -1,29 +1,29 @@
 .form-torneo {
-  background-color: white;
-  padding: 35px;
-  border-radius: 14px;
-  box-shadow: none;
+  background-color: #ffffff;
+  padding: 25px;
+  border-radius: 12px;
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.1);
   max-width: 460px;
   width: 100%;
   display: flex;
   flex-direction: column;
   transition: transform 0.2s ease;
+  text-align: left;
 }
 
 .form-torneo:hover {
   transform: scale(1.01);
-  box-shadow: none;
 }
 
-label {
+.form-torneo label {
   margin-top: 18px;
   font-weight: 600;
   color: #222;
   text-align: left;
 }
 
-input,
-select {
+.form-torneo input,
+.form-torneo select {
   margin-top: 8px;
   padding: 12px;
   border-radius: 8px;
@@ -33,16 +33,17 @@ select {
   font-weight: 500;
   font-size: 1rem;
   transition: border 0.3s, box-shadow 0.3s;
+  width: 100%;
 }
 
-input:focus,
-select:focus {
+.form-torneo input:focus,
+.form-torneo select:focus {
   outline: none;
   border-color: #666;
   box-shadow: 0 0 6px #666;
 }
 
-button {
+.form-torneo button {
   margin-top: 30px;
   padding: 14px;
   background-color: #d4f4f4;
@@ -55,12 +56,13 @@ button {
   transition: background-color 0.3s ease, transform 0.2s, border-color 0.3s;
 }
 
-button:hover {
+.form-torneo button:hover {
   background-color: #a0cfcf;
   color: #222;
   border-color: #666;
   transform: translateY(-2px);
 }
+
 main.contenedor {
   display: flex;
   flex-direction: column;
@@ -71,10 +73,31 @@ main.contenedor {
   width: 100%;
 }
 
-h2 {
+main.contenedor h2 {
   text-align: center;
   width: 100%;
   color: #222;
   font-size: 1.8rem;
   margin: 0;
+}
+
+@media (max-width: 768px) {
+  .form-torneo {
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: none;
+  }
+
+  .form-torneo input,
+  .form-torneo select {
+    font-size: 1rem;
+  }
+
+  .form-torneo button {
+    font-size: 1rem;
+  }
+
+  main.contenedor {
+    padding: 15px;
+  }
 }

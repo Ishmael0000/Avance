@@ -1,5 +1,3 @@
-
-
 const TorneoForm = () => {
   const [correo, setCorreo] = React.useState("");
   const [nombre, setNombre] = React.useState("");
