@@ -10,6 +10,13 @@ const CardFilter = () => {
       .catch((err) => console.error("Error cargando productos:", err));
   }, []);
 
+  const agregarAlCarrito = (producto) => {
+    const carritoActual = JSON.parse(localStorage.getItem("carritoItems")) || [];
+    carritoActual.push(producto);
+    localStorage.setItem("carritoItems", JSON.stringify(carritoActual));
+    alert(`"${producto.nombre}" fue añadido al carrito.`);
+  };
+
   const productosFiltrados = productos
     .filter((p) =>
       marca ? p.nombre.toLowerCase().includes(marca.toLowerCase()) : true
@@ -21,7 +28,7 @@ const CardFilter = () => {
 
   return (
     <div style={{ display: "flex", flexDirection: "column", alignItems: "center" }}>
-      <div className="filtros">
+      <div className="filtros" style={{ marginBottom: "1rem" }}>
         <select onChange={(e) => setMarca(e.target.value)} value={marca}>
           <option value="">Todas las marcas</option>
           <option value="Logitech">Logitech</option>
@@ -33,6 +40,7 @@ const CardFilter = () => {
         <select
           onChange={(e) => setPrecioMax(Number(e.target.value))}
           value={precioMax}
+          style={{ marginLeft: "1rem" }}
         >
           <option value="9999">Cualquier precio</option>
           <option value="200">Hasta S/. 200</option>
@@ -47,11 +55,26 @@ const CardFilter = () => {
           <p>No se encontraron productos.</p>
         ) : (
           productosFiltrados.map(({ nombre, url, precio }) => (
-            <figure key={nombre}>
-              <img src={url} alt={nombre} />
-              <figcaption>{nombre}</figcaption>
-              <div className="precio">{precio}</div>
-            </figure>
+            <div key={nombre} style={{ textAlign: "center" }}>
+              <img
+                src={url}
+                alt={nombre}
+                style={{
+                  width: "100%",
+                  height: "auto",
+                  maxHeight: "200px",
+                  objectFit: "contain",
+                }}
+              />
+              <div style={{ fontWeight: "bold", marginTop: "0.5rem" }}>{nombre}</div>
+              <div className="precio" style={{ margin: "0.5rem 0" }}>{precio}</div>
+              <button
+                className="btn-agregar"
+                onClick={() => agregarAlCarrito({ nombre, precio, url })}
+              >
+                Añadir al carrito
+              </button>
+            </div>
           ))
         )}
       </div>
